@@ -1,22 +1,21 @@
-import argparse
-
 def celsius_to_fahrenheit(c):
-    return (c * 9/5) + 32
+    return (c * 9 / 5) + 32
 
 def fahrenheit_to_celsius(f):
-    return (f - 32) * 5/9
+    return (f - 32) * 5 / 9
 
-parser = argparse.ArgumentParser(description="Convert temperature between Celsius and Fahrenheit")
+print("🌡️ Temperature Converter")
+print("1. Celsius → Fahrenheit")
+print("2. Fahrenheit → Celsius")
+choice = input("Enter choice (1 or 2): ")
 
-group = parser.add_mutually_exclusive_group(required=True)
-group.add_argument("-c", "--celsius", type=float, help="Convert Celsius to Fahrenheit")
-group.add_argument("-f", "--fahrenheit", type=float, help="Convert Fahrenheit to Celsius")
-
-args = parser.parse_args()
-
-if args.celsius is not None:
-    result = celsius_to_fahrenheit(args.celsius)
-    print(f"{args.celsius}°C = {result:.2f}°F")
-elif args.fahrenheit is not None:
-    result = fahrenheit_to_celsius(args.fahrenheit)
-    print(f"{args.fahrenheit}°F = {result:.2f}°C")
+if choice == '1':
+    c = float(input("Enter temperature in Celsius: "))
+    f = celsius_to_fahrenheit(c)
+    print(f"{c}°C = {f:.2f}°F")
+elif choice == '2':
+    f = float(input("Enter temperature in Fahrenheit: "))
+    c = fahrenheit_to_celsius(f)
+    print(f"{f}°F = {c:.2f}°C")
+else:
+    print("❌ Invalid choice. Please enter 1 or 2.")
